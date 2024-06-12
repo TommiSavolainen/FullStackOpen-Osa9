@@ -1,4 +1,4 @@
-const calculateBmi = (height: number, weight: number): string => {
+export const calculateBmi = (height: number, weight: number): string => {
     const bmi = weight / Math.pow(height / 100, 2);
     if (bmi < 18.5) {
         return 'Underweight';
@@ -11,4 +11,4 @@ const calculateBmi = (height: number, weight: number): string => {
     }
     };
 
-console.log(calculateBmi(180, 74)); // Normal (healthy weight)
+console.log(calculateBmi(Number(process.argv[2]), Number(process.argv[3]))); // Normal (healthy weight)
