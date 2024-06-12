@@ -23,13 +23,14 @@ app.get('/bmi', (req, res) => {
 
 
 app.post('/exercises', express.json(), (req, res) => {
-  const { daily_exercises, target } = req.body;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { daily_exercises, target }: { daily_exercises: number[], target: number } = req.body;
 
   if (!daily_exercises || !target) {
     return res.status(400).json({ error: 'parameters missing' });
   }
 
-  if (isNaN(Number(target)) || daily_exercises.some((d: any) => isNaN(Number(d)))) {
+  if (isNaN(Number(target)) || daily_exercises.some((d: number) => isNaN(Number(d)))) {
     return res.status(400).json({ error: 'malformatted parameters' });
   }
 
